@@ -1,0 +1,413 @@
+.workoutplan-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #E6F8F7;
+  height: 100%;
+  width: 100%;
+  /* Adjust the width as needed for laptop */
+  /* margin: 50px auto; */
+  overflow: hidden;
+}
+
+.top-div {
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+  height: 100px;
+  color: #E6F8F7;
+  background-color: rgb(27, 27, 36);
+}
+
+.card-container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card {
+  width: 25%;
+  height: 450px;
+  margin: 50px 30px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 10px;
+
+}
+
+.card:hover {
+  transition: transform 0.3s ease;
+  transform: translatey(-5px) scale(1.05);
+
+}
+
+.loadingAnimation {
+
+  background: linear-gradient(to left, transparent 0%, rgba(95, 83, 83, 0.937) 50%, transparent 100%);
+  background: linear-gradient(110deg, #fa8f8f 8%, #f9a9a9 18%, #feb4b4 33%);
+
+  background-size: 200% 100%;
+  animation: shine 1.5s linear infinite;
+}
+
+/*
+@keyframes shine {
+  0% {
+    background-position: -100% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}  */
+.shineAnimation {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, rgba(244, 134, 134, 0.5) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shine 1.5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100% 0%;
+  }
+
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+.days{
+  display: block;
+  color: #FFF;
+  background: #cb1313;
+  font-weight: 600;
+  font-size: 0.85em;
+  margin: 6px auto;
+  width: 50px;
+  padding: 1px 10px 2px;
+  border-radius: 12px;
+}
+
+
+.cardImg {
+  width: 100%;
+  height: 60%;
+  margin-top: 0;
+  /* background-image: url('../Resources/Workout-plan/3\ days.jpg'); */
+}
+
+.cardImg img {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.cardInfo {
+  text-align: center;
+  background-color: #E6F8F7;
+  width: 95%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.cardInfo button {
+  margin: 10px;
+  width: 100px;
+  height: 40px;
+  font-size: 14px;
+}
+
+.info-div {
+  position: absolute;
+  top: 150px;
+  z-index: 1;
+  padding: 20px;
+  height: auto;
+  width: 97%;
+  background-color: #E6F8F7;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.workout-split {
+ 
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.heading {
+ border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  background-color: rgb(111, 163, 252);
+  margin: 0;
+}
+
+.heading h2 {
+  padding: 10px;
+  margin: auto;
+}
+
+.workout-day {
+  
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* .workout-day button {
+  margin: auto;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: top;
+  background-position-x: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Add default styles for the button */
+.workout-day button {
+  border-radius: 0px 0px 10px 10px;
+  margin: auto;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position-y: top;
+  background-position-x: center;
+  height: 100%;
+  width: 100%;
+  background-color: #5ebef6;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Add the cool hover animation effect */
+.workout-day button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: skewX(30deg);
+  transition: left 0.3s ease;
+}
+
+.workout-day button:hover::before {
+  left: 100%;
+}
+
+
+
+.workout-day .push-icon {
+  background-image: url('../Resources/icons/bench.png');
+}
+
+.workout-day .pull-icon {
+  background-image: url('../Resources/icons/rows.png');
+}
+
+.workout-day .legs-icon {
+  background-image: url('../Resources/icons/squat.png');
+}
+
+.workout-day .upper-icon {
+  background-image: url('../Resources/icons/upper-body.jpg');
+}
+
+.workout-day .lower-icon {
+  background-image: url('../Resources/icons/squat\ 2.png');
+}
+
+.workout-day .rest-icon {
+  background-image: url('../Resources/icons/rest.png');
+}
+
+.workout-day button p {
+  margin-top: 50px;
+}
+
+.workouts {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+  background-color: #E6F8F7;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.shortcuts-hide{
+  display: none;
+}
+.shortcuts-show{
+  width: 100%;
+  display: flex;
+
+  background: #f9f9f9;
+    border: solid 1px #e3e3e3;
+    margin-bottom: 44px;
+    padding: 18px 0 20px;
+    text-align: center;
+    z-index: 2;
+}
+
+.split-bg{
+  /* margin: 0 auto; */
+  width: 100%;
+}
+.split-content {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+.split-bg img{
+  width: 100%;
+  height: 650px;
+
+}
+.fast-facts{
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgb(159, 213, 202) ;
+  border-radius: 5%;
+  margin-top: 10px;
+  line-height:1.5;
+  padding: 5px;
+}
+.fast-facts li{
+  text-align: start;
+}
+.benefits{
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgb(159, 213, 202) ;
+  border-radius: 5%;
+  margin-top: 10px;
+  line-height:1.5;
+  padding: 5px;
+}
+.benefits li{
+  text-align: start;
+}
+.about-split{
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 5%;
+  margin-top: 10px;
+  line-height:1.5;
+  padding: 5px;
+  text-align: start;
+}
+p{
+  font-size: 16px; /* Using pixels */
+}
+.about-split span {
+  font-family: serif;
+  display: inline-block;
+  padding-right: 10px;
+  line-height: 0.8; 
+  vertical-align: top;
+  font-size: 100px;
+  margin-top: -5px;
+  font-weight: 300;
+  text-align: center;
+}
+.about-split p{
+  display: flex;
+} 
+
+.exercise div {
+  display: flex;
+  margin-bottom: 10px;  
+}
+
+.exercise div img{
+  width: 30%;
+}
+
+/* .main-info{
+  display: block !important;
+  justify-content: space-between;
+  white-space: nowrap; 
+  align-items: center;
+  margin-top: 0 ;
+  width: 30%;
+  
+} */
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  margin-top: 50px;
+  margin-bottom: 0 !important;
+}
+
+.main-info > div {
+  display: flex;
+  align-items: center;
+  margin:0 !important;
+}
+
+.main-info >div >p{
+  margin: 0 !important;
+}
+.main-info .exersise-count p{
+  color: #cb1313;
+}
+
+
+/* CSS for the exercise-info container */
+ .exercise-info {
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap; 
+  align-items: center;
+  display: table;
+  float: right;
+  width: 30%;
+}
+
+/* CSS for each individual exercise item */
+.exercise-info > div {
+
+  display: table-cell;
+    padding: 0 15px;
+    text-align: center;
+    border-left: 1px solid #dedede;
+
+}
+
+.exercise-info label {
+  color: #b3b3b3;
+  display: block;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.exercise-info p {
+  font-size: 1.45em;
+  margin: 5px 0;
+} 
+

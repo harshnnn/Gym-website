@@ -1,0 +1,269 @@
+main {
+  /* background-color: rgba(255, 255, 255, 0.74); */
+  background-color: #E6F8F7;
+}
+
+/* patent--   background-color: rgba(15, 14, 23, 0.781); */
+
+.muscle-selector-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  width: 100%;
+  height: fit-content;
+  margin-bottom: 0;
+}
+.topDiv{
+  margin-top: -10px !important;
+}
+.myDiv {
+  width: 100%;
+  height: auto;
+  min-height: 650px;
+  max-height: 700px;
+  background-color: #fff;
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  /* box-shadow: 1px 1px 2.5px 0 rgba(0, 0, 0, 0.139); */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  margin-top: 50px;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.bicepText{
+  text-align: center;
+}
+
+/* Custom scroll styles */
+.myDiv::-webkit-scrollbar {
+  width: 10px;
+}
+
+.myDiv::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.myDiv::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.myDiv::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+button {
+  align-items: end;
+  display: block;
+}
+
+.exercise-div {
+  position: relative;
+  width: 80%;
+  margin-right: 30px;
+  margin-bottom: 50px;
+}
+
+.exercise-div div img {
+  border-radius: 10px;
+  /* box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.171); */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  margin: 20px 20px;
+  width: 200px;
+  height: 300px;
+}
+
+.myDiv-header {
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .muscle-selector-body {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .myDiv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .exercise-div div img {
+    width: 150px;
+    height: 250px;
+    margin-top: 1px;
+  }
+}
+
+/* Animation Effects */
+.exercise-div div img {
+  transition: transform 0.3s ease;
+}
+
+.exercise-div div img:hover {
+  transform: scale(1.2);
+}
+
+.myDiv-header {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expanded-image {
+  position: absolute;
+  display: flex;
+  margin-bottom: 40px;
+  margin-top: 100px;
+  width: 97% !important;
+  height: auto;
+  max-height: 580px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 5;
+  
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+/* .expanded-image .closebtn-div {
+  position: absolute;
+  float: right;
+  clear: both;
+  padding: 15px;
+  right: 10px;
+  margin-top: 0;
+  display: block;
+} */
+.content-btn{
+  border-image: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+  mix-blend-mode:multiply;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  border: none;
+  display: block;
+  float: right;
+  background-image: url(../Resources/Icon/icons8-close-24\ \(hover\).png);
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-color: inherit;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.content-btn:hover{
+  background-image: url(../Resources/Icon/icons8-close-24.png);
+  transform: rotate(90deg);
+
+}
+
+.expanded-image .expandedImg-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  width: 35%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.expanded-image .expandedImg-div img {
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.expanded-image .expanded-image-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  width: 60%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+.expanded-image .expanded-image-text h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+.expanded-image .expanded-image-text ul,
+.expanded-image .expanded-image-text li{
+  margin: 5px 0;
+}
+.expanded-image-text .expandeddiv-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.expanded-image-text button{
+  display: inline;
+  margin: 20px;
+  margin-bottom: 10px;
+}
+
+.gif-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-47 {
+  align-items: center;
+  background: #FFFFFF;
+  border: 0 solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  color: #1A202C;
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  height: 56px;
+  justify-content: center;
+  line-height: 24px;
+  overflow-wrap: break-word;
+  padding: 24px;
+  text-decoration: none;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-47:hover{
+  background: #ee0c0c82;
+  box-shadow: 2 6px 8px -1px rgba(0, 0, 0, 0.1), 1 3px 6px -3px rgba(14, 9, 9, 0.06);
+}
+   
+

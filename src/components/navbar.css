@@ -1,0 +1,140 @@
+
+  
+
+
+  nav {
+    background-color: #091e4500;
+    padding: 10px;
+    font-family: "Arial", sans-serif;
+    transition: background-color 0.3s ease;
+    border-radius: 5px; 
+    /* box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.155); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    width: 100%;
+  }
+  .scrollNav {
+    /* background-color: #bbb; */
+    background-color: rgb(0, 0, 0);
+  }
+  .scrollNav a{
+    color: #E5F7F7 !important;
+  }
+  
+  
+  .menu-btn, #menu-toggle {
+    display: none; 
+  }
+  
+  .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .menu li {
+    margin-right: 10px;
+  }
+  
+  a {
+    text-decoration: solid;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  a:active{
+    color: #fff;
+    background-color: burlywood;
+  }
+  a:hover {
+    background-color: #61969f;
+    /* color: #FFF; */
+  }
+  
+  /* Media query for responsive design */
+  @media (max-width: 768px) {
+    .menu-btn {
+      display: inline-block; /* Show the menu toggle button */
+      cursor: pointer;
+    }
+  
+    .menu {
+      display: none; /* Hide the menu items by default */
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: #E5F7F7;
+      padding: 10px;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+    }
+  
+    .menu li {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    /* Animation for menu toggle button */
+    .menu-icon {
+      display: block;
+      width: 30px;
+      height: 2px;
+      background-color: #333;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+  
+    /* Animate the menu toggle button on click */
+    input[type="checkbox"]:checked ~ .menu-btn .menu-icon {
+      transform: rotate(45deg);
+    }
+  
+    /* Show the menu items when menu toggle button is checked */
+    input[type="checkbox"]:checked ~ .menu {
+      display: flex;
+    }
+  }
+  
+
+  /* Scroll to top is a the button to go to top */
+  .scroll-to-top {
+
+    position: fixed;
+    height: 44px;
+    width: 44px;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    /* filter: drop-shadow (rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px); */
+    filter: drop-shadow(3px 5px 2px rgba(15, 10, 10, 0.4));
+    background-color: #e6f8f700;
+    mix-blend-mode: multiply;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  
+  .scroll-to-top.show {
+    /* display: block; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.66;
+  }
+  
+  .scroll-to-top:hover {
+    opacity: 2;
+  }
+  
+  
+  
