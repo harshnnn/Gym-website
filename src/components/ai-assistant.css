@@ -1,0 +1,46 @@
+.ai-assistant-body{
+  margin-top: 50PX;
+}
+
+.chat-container {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .message {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .user {
+    background-color: #eef0f1;
+  }
+  
+  .bot {
+    background-color: #f5f8fa;
+  }
+  
+  form {
+    margin-top: 10px;
+  }
+  
+  input[type="text"] {
+    width: 80%;
+    padding: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  

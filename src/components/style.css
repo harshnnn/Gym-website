@@ -1,0 +1,212 @@
+.muscle-groups {
+  position: relative;
+  background:#fff0.5;
+  width: 80%;
+  height: 81vh;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  overflow: hidden;
+  /* border-top: 0.75rem solid #00bcd4; */
+}
+.muscle-groups h1 {
+  margin: -0.5rem -1rem 1rem;
+  padding: 0 1rem 0.75rem;
+  background: #00bcd4;
+  color: #eee;
+  text-align: center;
+  font-size: 1.25rem;
+}
+.muscle-groups h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+.muscle-groups label + h2 {
+  margin-top: 1rem;
+}
+.muscle-groups label {
+  width: 50px;
+  display: block;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  opacity: 0.5;
+  position: relative;
+  z-index: 0;
+  border-left: 5px solid transparent;
+  padding-left: 6px;
+  margin-left: -11px;
+}
+.muscle-groups label:hover, .muscle-groups label.hover {
+  opacity: 1;
+  border-color: rgba(51, 51, 51, 0.75);
+}
+.muscle-groups input:checked + label {
+  opacity: 1;
+  font-weight: bold;
+  color: #00bcd4;
+}
+.muscle-groups svg {
+  position: relative;
+  width: 500px;
+  margin: -550px 300px 150px 300px;
+  padding-bottom: 100px;
+  z-index: 100;
+  height: 500px;
+}
+.muscle-groups svg g[id] path {
+  opacity: 0.2;
+  transition: opacity 0.25s ease-in-out;
+}
+.muscle-groups svg g g[id]:hover path {
+  cursor: pointer;
+  opacity: 0.5;
+  fill: #00bcd4 !important;
+}
+.muscle-groups .muscles-helper {
+  display: none;
+}
+.muscle-groups label[for=obliques]:hover ~ svg #Obliques path {
+  opacity: 0.75;
+}
+.muscle-groups .obliques:checked ~ svg #Obliques path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=abs]:hover ~ svg #Abs path {
+  opacity: 0.75;
+}
+.muscle-groups .abs:checked ~ svg #Abs path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=quads]:hover ~ svg #Quads path {
+  opacity: 0.75;
+}
+.muscle-groups .quads:checked ~ svg #Quads path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=biceps]:hover ~ svg #Biceps path {
+  opacity: 0.75;
+}
+.muscle-groups .biceps:checked ~ svg #Biceps path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=adductors]:hover ~ svg #Adductors path {
+  opacity: 0.75;
+}
+.muscle-groups .adductors:checked ~ svg #Adductors path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=pectorals]:hover ~ svg #Pectorals path {
+  opacity: 0.75;
+}
+.muscle-groups .pectorals:checked ~ svg #Pectorals path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=deltoids]:hover ~ svg #Deltoids path {
+  opacity: 0.75;
+}
+.muscle-groups .deltoids:checked ~ svg #Deltoids path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=hamstrings]:hover ~ svg #Hamstrings path {
+  opacity: 0.75;
+}
+.muscle-groups .hamstrings:checked ~ svg #Hamstrings path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=quads]:hover ~ svg #Quads path {
+  opacity: 0.75;
+}
+.muscle-groups .quads:checked ~ svg #Quads path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=forearms]:hover ~ svg #Forearms path {
+  opacity: 0.75;
+}
+.muscle-groups .forearms:checked ~ svg #Forearms path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=calves]:hover ~ svg #Calves path {
+  opacity: 0.75;
+}
+.muscle-groups .calves:checked ~ svg #Calves path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=triceps]:hover ~ svg #Triceps path {
+  opacity: 0.75;
+}
+.muscle-groups .triceps:checked ~ svg #Triceps path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=glutes]:hover ~ svg #Glutes path {
+  opacity: 0.75;
+}
+.muscle-groups .glutes:checked ~ svg #Glutes path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=lats]:hover ~ svg #Lats path {
+  opacity: 0.75;
+}
+.muscle-groups .lats:checked ~ svg #Lats path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+.muscle-groups label[for=trapezius]:hover ~ svg #Trapezius path {
+  opacity: 0.75;
+}
+.muscle-groups .trapezius:checked ~ svg #Trapezius path {
+  opacity: 0.8;
+  fill: #00bcd4 !important;
+}
+
+html {
+  background: #E6F8F7;
+}
+
+body {
+  font-family: Roboto;
+  margin: 0 !important;
+}
+
+main{
+  background-color: #F8EEE6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+main .info {
+  font-size: 0.8rem;
+  display: block;
+  width: 250px;
+  padding-top: 200px;
+  color: #eee;
+  padding-left: 2rem;
+  opacity: 0.5;
+}
+main .info:hover {
+  opacity: 1;
+}
+main .info a {
+  color: #eee;
+}

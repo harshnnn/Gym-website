@@ -1,0 +1,74 @@
+/* LandingPage.css */
+.landing-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../Resources/Zyzz.jpg');
+  background-size: cover !important;
+  background-position: center;
+  filter: brightness(50%);
+  z-index: -1;
+}
+.background-image h1{
+  position: fixed;
+  top: 0;
+  color: #fff;
+  margin-left: 600px;
+}
+
+.buttons-container {
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 500px; 
+  
+  float: right;
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+.content h1 {
+  font-size: 3rem;
+}
+
+.content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.signup-button,
+.login-button {
+  padding: 1rem 2rem;
+  background-color: #00ff00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: 120px;
+}
+
+.signup-button:hover,
+.login-button:hover {
+  background-color: #0097a7;
+}
+
+
+
+
