@@ -257,16 +257,16 @@
 .shortcuts-hide{
   display: none;
 }
+
 .shortcuts-show{
   width: 100%;
   display: flex;
-
   background: #f9f9f9;
-    border: solid 1px #e3e3e3;
-    margin-bottom: 44px;
-    padding: 18px 0 20px;
-    text-align: center;
-    z-index: 2;
+  border: solid 1px #e3e3e3;
+  margin-bottom: 44px;
+  padding: 18px 0 20px;
+  text-align: center;
+  z-index: 2;
 }
 
 .split-bg{

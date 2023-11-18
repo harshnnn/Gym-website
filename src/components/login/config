@@ -1,0 +1,111 @@
+public static int checkTree(int[][] matInput) {
+    // Implement the logic to check if the input array represents a valid binary tree
+    // Return 1 if it's a valid binary tree, 0 otherwise
+
+    // Check if the input array is empty or has more than one root
+    if (matInput.length == 0 || matInput.length > 1) {
+        return 0;
+    }
+
+    // Check if the root node has valid children
+    int rootValue = matInput[0][0];
+    if (!isValidChild(rootValue, matInput)) {
+        return 0;
+    }
+
+    // Check if the tree has cycles
+    if (hasCycle(matInput)) {
+        return 0;
+    }
+
+    // If all checks pass, the input array represents a valid binary tree
+    return 1;
+}
+
+private static boolean isValidChild(int parentValue, int[][] matInput) {
+    // Check if the parent node has no children or exactly two children
+    // If it has two children, check if their values are less than the parent's value
+
+    int leftChild = -1, rightChild = -1;
+    for (int i = 0; i < matInput.length; i++) {
+        for (int j = 0; j < matInput[i].length; j++) {
+            if (matInput[i][j] == parentValue) {
+                if (i < matInput.length - 1) {
+                    leftChild = matInput[i + 1][j];
+                }
+                if (j < matInput[i].length - 1) {
+                    rightChild = matInput[i][j + 1];
+                }
+                break;
+            }
+        }
+    }
+
+    if (leftChild == -1 && rightChild == -1) {
+        return true; // No children
+    } else if (leftChild != -1 && rightChild != -1) {
+        return leftChild < parentValue && rightChild < parentValue; // Two children, both less than parent
+    } else {
+        return false; // Invalid number of children
+    }
+}
+
+private static boolean hasCycle(int[][] matInput) {
+    // Check if there are any cycles in the tree by performing a depth-first search
+    // Use a visited array to keep track of nodes that have been visited
+    boolean[][] visited = new boolean[matInput.length][matInput[0].length];
+
+    for (int i = 0; i < matInput.length; i++) {
+        for (int j = 0; j < matInput[i].length; j++) {
+            if (!visited[i][j] && dfs(matInput, i, j, visited)) {
+                return true; // Cycle detected
+            }
+        }
+    }
+
+    // No cycles found
+    return false;
+}
+
+private static boolean dfs(int[][] matInput, int i, int j, boolean[][] visited) {
+    // Perform a depth-first search from the current node (i, j)
+    visited[i][j] = true;
+
+    // Check if the current node has any unvisited children
+    int leftChild = -1, rightChild = -1;
+    if (i < matInput.length - 1) {
+        leftChild = matInput[i + 1][j];
+    }
+    if (j < matInput[i].length - 1) {
+        rightChild = matInput[i][j + 1];
+    }
+
+    if (leftChild != -1 && !visited[i + 1][j]) {
+        if (dfs(matInput, i + 1, j, visited)) {
+            return true; // Cycle detected
+        }
+    }
+    if (rightChild != -1 && !visited[i][j + 1]) {
+        if (dfs(matInput, i, j + 1, visited)) {
+            return true; // Cycle detected
+        }
+    }
+
+    // No cycles found in this subtree
+    return false;
+}
+ public static int[] streetlight(int[] currentState, int days) {
+        int[] answer = new int[currentState.length];
+
+        for (int day = 0; day < days; day++) {
+            for (int i = 0; i < currentState.length; i++) {
+                // Example logic: Toggle the streetlight state (1 to 0 or 0 to 1)
+                currentState[i] = 1 - currentState[i];
+            }
+        }
+
+        // Copy the final state to the answer array
+        System.arraycopy(currentState, 0, answer, 0, currentState.length);
+
+        return answer;
+    }

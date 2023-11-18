@@ -1,0 +1,163 @@
+[
+    {
+      "id": 1,
+      "name": "Spinach Salad",
+      "calories": 50,
+      "protein": 3,
+      "fat": 2,
+      "carbs": 7
+    },
+    {
+      "id": 2,
+      "name": "Vegetable Stir-Fry",
+      "calories": 200,
+      "protein": 10,
+      "fat": 8,
+      "carbs": 25
+    },
+    {
+      "id": 3,
+      "name": "Bean Burrito",
+      "calories": 300,
+      "protein": 15,
+      "fat": 12,
+      "carbs": 35
+    },
+    {
+      "id": 4,
+      "name": "Broccoli Soup",
+      "calories": 120,
+      "protein": 5,
+      "fat": 4,
+      "carbs": 15
+    },
+    {
+      "id": 5,
+      "name": "Quinoa Salad",
+      "calories": 180,
+      "protein": 8,
+      "fat": 6,
+      "carbs": 30
+    },
+    {
+      "id": 6,
+      "name": "Lentil Curry",
+      "calories": 250,
+      "protein": 12,
+      "fat": 5,
+      "carbs": 40
+    },
+    {
+      "id": 7,
+      "name": "Tofu Stir-Fry",
+      "calories": 220,
+      "protein": 15,
+      "fat": 10,
+      "carbs": 25
+    },
+    {
+      "id": 8,
+      "name": "Hummus Wrap",
+      "calories": 280,
+      "protein": 7,
+      "fat": 15,
+      "carbs": 30
+    },
+    {
+      "id": 9,
+      "name": "Mushroom Risotto",
+      "calories": 320,
+      "protein": 9,
+      "fat": 12,
+      "carbs": 40
+    },
+    {
+      "id": 10,
+      "name": "Vegetable Pasta",
+      "calories": 280,
+      "protein": 10,
+      "fat": 8,
+      "carbs": 45
+    },
+    {
+      "id": 11,
+      "name": "Zucchini Noodles",
+      "calories": 90,
+      "protein": 3,
+      "fat": 2,
+      "carbs": 15
+    },
+    {
+      "id": 12,
+      "name": "Eggplant Parmesan",
+      "calories": 260,
+      "protein": 11,
+      "fat": 14,
+      "carbs": 25
+    },
+    {
+      "id": 13,
+      "name": "Stuffed Bell Peppers",
+      "calories": 180,
+      "protein": 6,
+      "fat": 7,
+      "carbs": 20
+    },
+    {
+      "id": 14,
+      "name": "Cauliflower Rice",
+      "calories": 40,
+      "protein": 2,
+      "fat": 1,
+      "carbs": 8
+    },
+    {
+      "id": 15,
+      "name": "Avocado Salad",
+      "calories": 220,
+      "protein": 5,
+      "fat": 20,
+      "carbs": 10
+    },
+    {
+      "id": 16,
+      "name": "Caprese Salad",
+      "calories": 160,
+      "protein": 8,
+      "fat": 10,
+      "carbs": 8
+    },
+    {
+      "id": 17,
+      "name": "Eggplant Rollatini",
+      "calories": 300,
+      "protein": 14,
+      "fat": 18,
+      "carbs": 25
+    },
+    {
+      "id": 18,
+      "name": "Corn Chowder",
+      "calories": 180,
+      "protein": 6,
+      "fat": 8,
+      "carbs": 20
+    },
+    {
+      "id": 19,
+      "name": "Veggie Burger",
+      "calories": 250,
+      "protein": 12,
+      "fat": 15,
+      "carbs": 20
+    },
+    {
+      "id": 20,
+      "name": "Cucumber Salad",
+      "calories": 60,
+      "protein": 2,
+      "fat": 1,
+      "carbs":2
+    }
+]
+  

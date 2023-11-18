@@ -4,7 +4,6 @@ import './LandingPage.css';
 
 
 
-
 const LandingPage = () => {
   const navigate = useNavigate();
 
@@ -12,12 +11,14 @@ const LandingPage = () => {
     <div className="landing-page background-image">
       {/* <div className="background-image"> */}
       <h1>Following the legacy of Zyzz</h1>
-      
+    
       <div className="buttons-container">
         
         <div className="buttons">
-          <button className="signup-button" onClick={()=> navigate('/muscle-selector')}>Sign Up</button>
-          <button className="login-button" onClick={()=> navigate('/muscle-selector')}>Login</button>
+          <button className="login-button" onClick={()=> navigate('/muscle-selector')}>Explore as Guest</button>
+          <button className = "login-button" onClick={()=> navigate('/login')}>Login Page</button>
+          <button className = "login-button" onClick={()=> navigate('/signup')}>Signup Page</button>
+
         </div>
       </div>
     </div>

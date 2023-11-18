@@ -5,7 +5,8 @@ import './navbar.css';
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
-  
+  const user = JSON.parse(localStorage.getItem('user'));
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +61,11 @@ const Navbar = () => {
       <span className="menu-icon"></span>
     </label>
     <ul className="menu">
+
+      <li className='user-icon' >
+        <Link  to="/user">{user ? user.email: 'User'}</Link>
+      </li>
+ 
       <li>
         <Link to="/muscle-selector">MuscleGroupSelector</Link>
       </li>

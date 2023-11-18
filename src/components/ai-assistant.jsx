@@ -1,75 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ai-assistant.css';
 import Navbar from './navbar';
+import { Spinner } from 'react-spinner';
+import { Configuration, OpenAIApi } from 'openai';
 
+const configuration = new Configuration({
+  apiKey: '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'
+});
+const openai = new OpenAIApi(configuration);
 
 const AiAssistantPage = () => {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([]);
+  const [response, setResponse] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e) => {
-    setInput(e.target.value);
-  };
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  }
 
-    if (input.trim() === '') {
-      return;
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
 
-    const userMessage = {
-      role: 'user',
-      content: input,
-    };
+    const completion = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: input }],
+    });
 
-    setMessages([...messages, userMessage]);
+    setResponse(completion.data.choices[0].message.content);
+    setLoading(false);
     setInput('');
+  }
 
-    try {
-      const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
-        {
-          messages: [...messages, userMessage],
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': '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',
-          },
-        }
-      );
+  // Default questions related to gym and fitness
+  const defaultQuestions = [
+    "What are some effective workout plans for beginners?",
+    "Can you suggest a balanced diet plan for muscle gain?",
+    "How many days a week should I work out?",
+    "Tell me about some popular gym exercises for weight loss.",
+  ];
 
-      const botReply = response.data.choices[0].message.content;
-      const botMessage = {
-        role: 'bot',
-        content: botReply,
-      };
-
-      setMessages([...messages, botMessage]);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const handleDefaultQuestionClick = async (question) => {
+    setInput(question);
+    // await handleSubmit({ preventDefault: () => { } }); // Trigger the bot's response
   };
+
+  // useEffect(() => {
+  //   // Set a random default question when the component mounts
+  //   const randomQuestion =
+  //     defaultQuestions[Math.floor(Math.random() * defaultQuestions.length)];
+  //   setResponse(randomQuestion);
+  // }, []);
 
   return (
-    <div className='ai-assistant-body'>
-      <Navbar/>
-      <h2>Chatbot</h2>
-      <div className="chat-container">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.role}`}>
-            {message.content}
-          </div>
-        ))}
+    <>
+      <Navbar />
+      <div className='chat-bot'>
+        <form onSubmit={handleSubmit}>
+          <input value={input} onChange={handleInputChange} />
+          <button type="submit">Send</button>
+        </form>
+        <div>
+          {defaultQuestions.map((question, index) => (
+            <div
+              key={index}
+              className="default-question"
+              onClick={() => handleDefaultQuestionClick(question)}
+            >
+              {question}
+            </div>
+          ))}
+        </div>
+        <div className='response'>{loading ? <div className="loading-spinner"></div> : response}</div>
+
       </div>
-      <form onSubmit={handleFormSubmit}>
-        <input type="text" value={input} onChange={handleInputChange} />
-        <button type="submit">Send</button>
-      </form>
-    </div>
+    </>
   );
-};
+}
 
 export default AiAssistantPage;

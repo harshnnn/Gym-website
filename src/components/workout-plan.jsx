@@ -3,7 +3,8 @@ import Navbar from './navbar';
 import WorkoutSplit from './workout-splits';
 import './workout-plan.css';
 
-const WorkoutPlanPage = () => {
+
+const WorkoutPlanPage = ({saveWorkout}) => {
 
 
   //for card loading animation
@@ -23,7 +24,7 @@ const WorkoutPlanPage = () => {
     var i = 0;
     setActiveDiv(divId);
     if (divId === 'div1') {
-      
+
       for (i = 0; i < infoDivs.length; i++) {
         infoDivs[i].style.display = 'none';
       }
@@ -98,7 +99,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv1Open, setIsDiv1Open] = useState(false);
   const viewDiv1 = () => {
-    toggleShortcuts();
+    setShowShortcuts(true);
     setIsDiv1Open(!isDiv1Open);
     changeHeadingText('6-Day Push/Pull/Legs Split');
     setHtextnum(1);
@@ -107,6 +108,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv2Open, setIsDiv2Open] = useState(false);
   const viewDiv2 = () => {
+    setShowShortcuts(true);
     setIsDiv2Open(!isDiv2Open);
     changeHeadingText('6-Day Upper/Lower Split');
     setHtextnum(2);
@@ -115,6 +117,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv3Open, setIsDiv3Open] = useState(false);
   const viewDiv3 = () => {
+    setShowShortcuts(true);
     setIsDiv3Open(!isDiv3Open);
     changeHeadingText('5-Day Push/Pull/Legs Split');
     setHtextnum(3);
@@ -123,6 +126,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv4Open, setIsDiv4Open] = useState(false);
   const viewDiv4 = () => {
+    setShowShortcuts(true);
     setIsDiv4Open(!isDiv4Open);
     changeHeadingText('5-Day Bro Split');
     setHtextnum(4);
@@ -131,6 +135,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv5Open, setIsDiv5Open] = useState(false);
   const viewDiv5 = () => {
+    setShowShortcuts(true);
     setIsDiv5Open(!isDiv5Open);
     changeHeadingText('4-Day Upper/Lower Split');
     setHtextnum(5);
@@ -139,6 +144,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv6Open, setIsDiv6Open] = useState(false);
   const viewDiv6 = () => {
+    setShowShortcuts(true);
     setIsDiv6Open(!isDiv6Open);
     changeHeadingText('3-Day Full-Body Split');
     setHtextnum(6);
@@ -147,6 +153,7 @@ const WorkoutPlanPage = () => {
 
   const [isDiv7Open, setIsDiv7Open] = useState(false);
   const viewDiv7 = () => {
+    setShowShortcuts(true);
     setIsDiv7Open(!isDiv7Open);
     changeHeadingText('5-Day Push/Pull/Legs/Upper/Lower');
     setHtextnum(7);
@@ -162,6 +169,8 @@ const WorkoutPlanPage = () => {
     setIsDiv6Open(false);
     setIsDiv7Open(false);
 
+    setShowShortcuts(false);
+
     changeHeadingText("Workout Plans");
 
     const cardDivs = document.querySelectorAll('.card');
@@ -170,33 +179,40 @@ const WorkoutPlanPage = () => {
     });
   }
 
-  const [hideShortcuts, setHideShortcuts] = useState(false);
+  const [showShortcuts, setShowShortcuts] = useState(null);
 
-  const toggleShortcuts = () => {
-    setHideShortcuts(!hideShortcuts);
-  };
+
 
 
   const programRef = useRef(null);
   const getstartedRef = useRef(null);
 
   const scrollToProgram = () => {
-    
-      if (programRef.current) {
-        programRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    
+
+    if (programRef.current) {
+      programRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
 
 
   }
 
   const scrollTogetstarted = () => {
-    if(getstartedRef.current){
-      getstartedRef.current.scrollIntoView({behavior:'smooth'});
+    if (getstartedRef.current) {
+      getstartedRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  
 
+  const handleSave = async (workoutId) => {
+    if (!isLoading) {
+      try {
+        await saveWorkout(workoutId); // Assuming saveWorkout takes a workout ID
+        alert('done')
+      } catch (error) {
+        console.error('Error saving workout:', error);
+      }
+    }
+  };
 
   return (
 
@@ -211,9 +227,10 @@ const WorkoutPlanPage = () => {
 
         <WorkoutSplit activeDiv={activeDiv} changeHeading={changeHeadingText} Htextnum={Htextnum} />
 
-        <div className={`shortcuts-show ${hideShortcuts ? 'shortcuts-hide' : ''}`}>
-                <button onClick={scrollToProgram}>Program Overview</button>
-                <button onClick={scrollTogetstarted}>Get Started</button>
+        <div className={`shortcuts-hide ${showShortcuts ? 'shortcuts-show' : ''}`}>
+          <button onClick={scrollToProgram}>Program Overview</button>
+          <button onClick={scrollTogetstarted}>Get Started</button>
+
         </div>
 
         {isDiv1Open &&
@@ -223,7 +240,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 1.webp')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -233,7 +250,7 @@ const WorkoutPlanPage = () => {
                   <li>The PPL split allows for flexibility in training by allowing you to customize exercises for each muscle group.</li>
                 </ul>
               </div>
-              <div className='about-split'>
+              <div className='about-split'  >
                 <p><span >H</span>it the gym consistently, and you’ll see some pretty questionable things—from gym bros chasing a pump to attention seekers ego lifting. For every few phone scrollers, you’ll catch a unicorn: headphones on, head down, putting in the work.</p>
                 <p>If they’re always pumping iron, with the muscle to show for it, you can guarantee they’re following a structured workout routine. There are endless ways to break it down. One of the best? The “Push Pull Legs” (PPL) split.</p>
                 <p>Praised for its simplicity and attention to movement (as opposed to focusing on individual muscle groups like a bro split), the PPL split is one of the most popular ways to program your workouts. Even better, in a sea of Reddit threads arguing over which split is the best, few have anything negative to say about a PPL routine.</p>
@@ -251,7 +268,7 @@ const WorkoutPlanPage = () => {
                 </ul>
               </div>
 
-              <div className='about-split'>
+              <div className='about-split' >
                 <h3>What Is a PPL Split?</h3>
                 <p>A PPL split is a workout program designed to build muscle in almost every single muscle group by splitting different movements (and thus, major muscle groups) into distinct days of the week. On certain days you train your upper body pushing muscles (push), upper body pulling muscles (pull), or your lower body (legs). Like so:</p>
                 <ul>
@@ -267,7 +284,7 @@ const WorkoutPlanPage = () => {
             </div>
 
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2>Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -332,7 +349,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 2.jpg')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -375,7 +392,7 @@ const WorkoutPlanPage = () => {
               </div>
             </div>
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2> Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -440,7 +457,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 3.webp')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -483,7 +500,7 @@ const WorkoutPlanPage = () => {
               </div>
             </div>
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2>Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -549,7 +566,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 4.webp')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -592,7 +609,7 @@ const WorkoutPlanPage = () => {
               </div>
             </div>
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2>Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -766,7 +783,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 7.jfif')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -812,7 +829,7 @@ const WorkoutPlanPage = () => {
 
             </div>
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2> Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -877,7 +894,7 @@ const WorkoutPlanPage = () => {
             <div className='split-bg'>
               <img src={require('../Resources/workout-split/workout 8.webp')} alt="fafad" />
             </div>
-            <div className='split-content'>
+            <div className='split-content' ref={programRef}>
               <div className='fast-facts'>
                 <h3>Fast Facts</h3>
                 <ul>
@@ -923,7 +940,7 @@ const WorkoutPlanPage = () => {
 
             </div>
 
-            <div className='workout-split'>
+            <div className='workout-split' ref={getstartedRef}>
               <h2> Workout Schedule</h2>
               <div className='heading'><h2>Week 1</h2>
               </div>
@@ -993,7 +1010,7 @@ const WorkoutPlanPage = () => {
             <button className={isLoading ? 'button-47 shineAnimation' : 'button-47 show-button'} onClick={viewDiv1} disabled={isLoading}>
               {isLoading ? 'Loading...' : 'VIEW'}
             </button>
-            <button className={isLoading ? "button-47 shineAnimation" : 'button-47'} disabled={isLoading}>
+            <button className={isLoading ? "button-47 shineAnimation" : 'button-47'} disabled={isLoading} onClick={() => handleSave(1)}>
               {isLoading ? 'Loading...' : 'SAVE'}
             </button>
           </div>

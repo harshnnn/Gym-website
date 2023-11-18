@@ -1738,3 +1738,247 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+assistant
+//import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './ai-assistant.css';
+import Navbar from './navbar';
+import { Configuration, OpenAIApi } from 'openai';
+
+const configuration = new Configuration({
+  apiKey: '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'
+});
+const openai = new OpenAIApi(configuration);
+
+const AiAssistantPage = () => {
+  const [input, setInput] = useState('');
+  const [response, setResponse] = useState('');
+
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    const completion = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo', 
+      messages: [{
+        role: 'user',
+        content: input
+      }]
+    });
+    
+    setResponse(completion.data.choices[0].message.content);
+    setInput('');
+  }
+
+  return (
+    <div>
+      <Navbar/>
+      <form onSubmit={handleSubmit}>
+        <input 
+          value={input}
+          onChange={handleInputChange} 
+        />
+        <button type="submit">Send</button>
+      </form>
+      
+      <div>{response}</div>
+    </div>
+  );
+}
+
+export default AiAssistantPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+import React, { useState, useEffect } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth, firestore } from './firebase';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../navbar';
+import { getDoc, doc, setDoc } from 'firebase/firestore';
+
+import './login.css';
+
+const User = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const navigate = useNavigate();
+    const userRef = doc(firestore, 'UserData', user.uid);
+
+    const [userData, setUserData] = useState({
+        Weight: '',
+        Height: '',
+        Age: '',
+        Gender: '',
+        Name: user.displayName || 'User', // Get user's display name or set as 'User'
+    });
+
+    const handleLogout = async () => {
+        await signOut(auth);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+    };
+
+    const loadData = async () => {
+        try {
+            const userDoc = await getDoc(userRef);
+            if (userDoc.exists()) {
+                const userData = userDoc.data();
+                setUserData(userData);
+            }
+        } catch (error) {
+            console.error('Error loading user data:', error);
+        }
+    };
+
+    useEffect(() => {
+        loadData(); // Load user data on component mount
+    }, []);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await setDoc(userRef, userData); // Update user data in Firestore
+            console.log('User information updated successfully!');
+        } catch (error) {
+            console.error('Error updating user information:', error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUserData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const calculateBMI = (weight, height) => {
+        // Convert height from centimeters to meters
+        const heightInMeters = height / 100;
+
+        // Calculate BMI
+        const bmi = weight / (heightInMeters * heightInMeters);
+
+        // Return the calculated BMI
+        return bmi.toFixed(2); // Limiting to 2 decimal places
+    };
+
+    const bmi = calculateBMI(userData.Weight, userData.Height);
+
+    const bmiPointer = document.getElementById('bmiPointer');
+
+    if (bmi < 18.5) {
+        bmiPointer.style.left = '5%';
+    } else if (bmi >= 18.5 && bmi < 25) {
+        bmiPointer.style.left = '45%';
+    } else if (bmi >= 25 && bmi < 30) {
+        bmiPointer.style.left = '65%';
+    } else {
+        bmiPointer.style.left = '95%';
+    }
+
+
+
+    return (
+        <>
+            <Navbar />
+            <div className="user-body">
+                <h1>Welcome to React Firebase Auth</h1>
+                <h2>{user && user.email}</h2>
+                <button onClick={handleLogout}>Logout</button>
+
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Name:
+                        <input
+                            type="text"
+                            name="Name"
+                            value={userData.Name}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <label>
+                        Weight:
+                        <input
+                            type="text"
+                            name="Weight"
+                            value={userData.Weight}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <label>
+                        Height:
+                        <input
+                            type="text"
+                            name="Height"
+                            value={userData.Height}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <label>
+                        Age:
+                        <input
+                            type="text"
+                            name="Age"
+                            value={userData.Age}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <label>
+                        Gender:
+                        <input
+                            type="text"
+                            name="Gender"
+                            value={userData.Gender}
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <button type="submit">Save</button>
+                </form>
+
+                {/* Displaying Current User Data */}
+                <div>
+                    <h3>Current User Data:</h3>
+                    <p>Weight: {userData.Weight}</p>
+                    <p>Height: {userData.Height}</p>
+                    <p>Age: {userData.Age}</p>
+                    <p>Gender: {userData.Gender}</p>
+                    <p>Name: {userData.Name}</p>
+                    <p>BMI: {bmi}</p> {/* Displaying the calculated BMI */}
+
+                </div>
+
+                <div class="bmi-scale">
+                    <div class="bmi-label underweight">Underweight</div>
+                    <div class="bmi-label normal">Normal</div>
+                    <div class="bmi-label overweight">Overweight</div>
+                    <div class="bmi-label obese">Obese</div>
+                    <div class="bmi-pointer" id="bmiPointer"></div>
+                </div>
+                <p class="bmi-value">BMI: <span id="bmiValue">{bmi}</span></p>
+
+
+            </div>
+        </>
+    );
+};
+
+export default User;
