@@ -5,9 +5,13 @@ import Navbar from './navbar';
 import { Spinner } from 'react-spinner';
 import { Configuration, OpenAIApi } from 'openai';
 
+
 const configuration = new Configuration({
-  apiKey: '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'
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
 });
+
+
+
 const openai = new OpenAIApi(configuration);
 
 const AiAssistantPage = () => {

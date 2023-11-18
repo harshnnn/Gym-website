@@ -25,3 +25,6 @@ yarn-error.log*
 # SQL Server files
 *.mdf
 *.ldf
+
+#api keys
+.env
