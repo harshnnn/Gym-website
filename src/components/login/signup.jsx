@@ -2,9 +2,9 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth } from './firebase';
 import { Link, useNavigate } from 'react-router-dom';
-
 import './login.css'
-
+import LoginPage from './login';
+import logo from '../../Resources/logo.png'
 
 const SignupPage = () => {
 
@@ -12,6 +12,11 @@ const SignupPage = () => {
 
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
+    const [showLogin,setShowLogin] = useState(false);
+
+    const handleShowLogin = () =>{
+        setShowLogin(true);
+    }
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
@@ -29,8 +34,9 @@ const SignupPage = () => {
 
     return (
         <div className='auth-body'>
-            <h1>Signup page</h1>
-            <form onSubmit={handleSubmit} className='signup-form'>
+            {showLogin === false && (<img src={logo}  alt="" />)}
+            {showLogin === false &&(<h1>Create Your Account</h1>)}
+            {showLogin === false &&(<form onSubmit={handleSubmit} className='signup-form'>
                 <input
                     type="email"
                     placeholder='Your Email'
@@ -46,8 +52,9 @@ const SignupPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button type='submit' className='signup-button'>Signup</button>
-            </form>
-            <p>Need to Login? <Link to="/login">Login </Link> </p>
+            </form>)}
+            {showLogin === false && (<p className='switch-auth'>Need to Login? <button onClick={handleShowLogin}>Login </button> </p>)}
+            {showLogin && (<LoginPage/>)}
         </div>
     );
 };

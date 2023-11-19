@@ -55,7 +55,7 @@
   width: 500px;
   margin: -550px 300px 150px 300px;
   padding-bottom: 100px;
-  z-index: 100;
+  z-index: 1;
   height: 500px;
 }
 .muscle-groups svg g[id] path {

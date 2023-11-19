@@ -31,6 +31,8 @@ nav {
 .menu {
   list-style-type: none;
   margin: 0;
+  margin-left: 100px;
+
   padding: 0;
   display: flex;
   justify-content: flex-end;
@@ -38,7 +40,7 @@ nav {
 }
 
 .menu li {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 a {
@@ -141,7 +143,54 @@ a:hover {
 
 
 .user-icon {
-  margin-right: auto !important;
-  margin-left: 50px;
+  margin-left: auto ;
+  margin-right: 100px !important;
   /* Push the user-icon to the left by taking up available space */
+}
+
+.user-icon-img{
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: white;
+}
+
+.scroll-user-icon svg{
+  fill: white;
+}
+
+.user-icon-list{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px;
+  position: absolute;
+  border-radius: 8px;
+  top: 50px;
+  width: 100px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user-icon-list button{
+  background-color: #fff;
+  color: black;
+  font-size:medium;
+  padding-left: 10px;
+}
+
+.login-active::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px); /* Adjust the blur amount as needed */
+  z-index: 1;
+}
+
+/* Glass effect for the modal */
+.login-active {
+  background-color: rgba(255, 255, 255, 0.229); /* Adjust the opacity as needed */
 }

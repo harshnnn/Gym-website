@@ -8,6 +8,7 @@ import { getDoc, doc, setDoc } from 'firebase/firestore';
 import maleimage from '../../Resources/Users/male.png';
 import femaleimage from '../../Resources/Users/female.png';
 
+
 import './login.css';
 import WorkoutPlanPage from '../workout-plan';
 
@@ -49,7 +50,7 @@ const User = () => {
         await signOut(auth);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        navigate('/login');
+        navigate('/muscle-selector');
     };
 
     const loadData = async () => {
@@ -156,7 +157,7 @@ const User = () => {
 
     return (
         <>
-            <Navbar />
+            <Navbar handleLogout={handleLogout} />
             <div className="user-body">
                 <div className='header'><h1>Profile</h1></div>
 

@@ -82,7 +82,7 @@ const WorkoutPlanPage = ({saveWorkout}) => {
   };
 
   //to change the heading when different component renders on screen
-  const [headingText, setHeadingText] = useState('Workout Plans');
+  const [headingText, setHeadingText] = useState('My Training Regimen');
   const changeHeadingText = (newText) => {
     setHeadingText(newText);
   };
@@ -171,7 +171,7 @@ const WorkoutPlanPage = ({saveWorkout}) => {
 
     setShowShortcuts(false);
 
-    changeHeadingText("Workout Plans");
+    changeHeadingText("My Training Regimen");
 
     const cardDivs = document.querySelectorAll('.card');
     cardDivs.forEach(div => {
